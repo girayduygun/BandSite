@@ -11,11 +11,11 @@
     <header id="home" class="wrapper--header">
         <nav class="navbar">
             <div class="navbar__logo">
-                <a class="navbar__link" href="index.html"><img class="navbar__img" src="./assets/logos/Logo-bandsite.svg" alt="bandsite logo"></a></div>
+                <a class="navbar__link" href="./index.html"><img class="navbar__img" src="./assets/logos/Logo-bandsite.svg" alt="bandsite logo"></a></div>
             <div class="navbar__pages">
                 <ul class="navbar__list">
-                    <li class="navbar__item navbar__item--active"><a class="navbar__link" href="index.html">Biography</a></li>
-                    <li class="navbar__item"><a class="navbar__link--desactive" href="#">Shows</a></li>
+                    <li class="navbar__item navbar__item--active"><a class="navbar__link" href="./index.html">Biography</a></li>
+                    <li class="navbar__item navbar__item--desactive"><a class="navbar__link--desactive" href="./pages/shows.html">Shows</a></li>
                 </ul>
             </div>
         </nav>
@@ -58,17 +58,38 @@
             <div class="gallery">
                 <h2 class="gallery__title">Photo Gallery</h2>
                 <div class="gallery__images--list">
-                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-1.jpg" alt="concert"></div>
-                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-2.jpg" alt="women in concert"></div>
-                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-3.jpg" alt="hands up"></div>
+                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-1.jpg" alt="people in concert"></div>
+                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-2.jpg" alt="women hands up in party"></div>
+                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-3.jpg" alt="people hands up in concert"></div>
                     <div class="gallery__img"><img src="./assets/images/Photo-gallery-4.jpg" alt="women in concert"></div>
-                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-5.jpg" alt="hands up"></div>
-                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-6.jpg" alt="singer in concert"></div>
+                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-5.jpg" alt="hands up in party"></div>
+                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-6.jpg" alt="singer singing in concert"></div>
                     <div class="gallery__img"><img src="./assets/images/Photo-gallery-7.jpg" alt="audience in concert"></div>
                     <div class="gallery__img"><img src="./assets/images/Photo-gallery-8.jpg" alt="dj with mixer"></div>
-                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-9.jpg" alt="concert"></div>
+                    <div class="gallery__img"><img src="./assets/images/Photo-gallery-9.jpg" alt="confettis on people in concert"></div>
                 </div>
             </div>
+        </section>
+        <!-- CONVERSATION SECTION -->
+        <section class="conversation">
+            <h2 class="conversation__title">Join the Conversation</h2>
+            <form action="" method="post" class="conversation__form">
+                <div class="conversation__row">
+                    <div class="conversation__picture">
+                        <img class="conversation__profile--pic" src="./assets/images/Mohan-muruge.jpg" alt="Mohan Muruge profile picture">
+                    </div>
+                    <div class="conversation__details">
+                        <label for="name" class="conversation__heading">NAME</label>
+                        <input type="text" name="name" placeholder="Enter your name" required>
+                        <label for="comment" class="conversation__heading">COMMENT</label>
+                        <textarea name="comment" id="" cols="30" rows="5" placeholder="Add a new comment" required></textarea>
+                        <div class="conversation__submit--button">
+                            <button type="submit" class="conversation__submit">COMMENT</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="conversation__comments"></div>
         </section>
         <!-- FOOTER SECTION -->
         <footer class="wrapper--footer">
@@ -145,5 +166,6 @@
             </section>
         </footer>
     </main>
+    <script src="./scripts/index-page.js"></script>
 </body>
 </html>

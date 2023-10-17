@@ -70,26 +70,26 @@
                 </div>
             </div>
         </section>
-        <!-- CONVERSATION SECTION -->
-        <section class="conversation">
-            <h2 class="conversation__title">Join the Conversation</h2>
-            <form action="" method="post" class="conversation__form">
-                <div class="conversation__row">
-                    <div class="conversation__picture">
-                        <img class="conversation__profile--pic" src="./assets/images/Mohan-muruge.jpg" alt="Mohan Muruge profile picture">
-                    </div>
-                    <div class="conversation__details">
-                        <label for="name" class="conversation__heading">NAME</label>
-                        <input type="text" name="name" placeholder="Enter your name" required>
-                        <label for="comment" class="conversation__heading">COMMENT</label>
-                        <textarea name="comment" id="" cols="30" rows="5" placeholder="Add a new comment" required></textarea>
-                        <div class="conversation__submit--button">
-                            <button type="submit" class="conversation__submit">COMMENT</button>
-                        </div>
-                    </div>
+        <!-- COMMENTS SECTION -->
+        <section id="comment" class="comment">
+            <div class="comment__title">Join the Conversation</div>
+            <div class="comment__container">
+                <div>
+                    <img class="comment__photo" src="./assets/images/Mohan-muruge.jpg" alt="profile photo"/>
                 </div>
-            </form>
-            <div class="conversation__comments"></div>
+                <form class="comment__form" id="comment-form" method="post">
+                    <label class="comment__label">
+                        <span class="comment__label-text">NAME</span>
+                        <input class="comment__input" type="text" required placeholder="Enter your name"/>
+                    </label>
+                    <label class="comment__label">
+                        <span class="comment__label-text">COMMENT</span>
+                        <textarea class="comment__input" rows="5" required placeholder="Add a new comment"></textarea>
+                    </label>
+                    <button class="comment__button" type="submit">COMMENT</button>
+                </form>
+            </div>
+            <div id="comment-section" class="comment__section"></div>
         </section>
         <!-- FOOTER SECTION -->
         <footer class="wrapper--footer">
@@ -159,13 +159,14 @@
                     </div>
                     <!-- LOGO MOBILE -->
                     <div class="footer__logo footer__logo--mobile">
-                        <a class="footer__link--mobile" href="#home"><img src="./assets/logos/Logo-bandsite.svg" alt="bandsite logo"></a>
+                        <a class="footer__link--mobile" href="./index.html"><img src="./assets/logos/Logo-bandsite.svg" alt="bandsite logo"></a>
                         <p class="footer__copy">Copyright The Bees Knees © 2021 All Rights Reserved</p>
                     </div>
                 </div>
             </section>
         </footer>
     </main>
-    <script src="./scripts/index-page.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="./scripts/index-page.js" type="module"></script>
 </body>
 </html>

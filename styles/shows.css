@@ -266,167 +266,198 @@ img {
   }
 }
 
-.shows {
-  box-sizing: border-box;
-  padding-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 2rem;
-  margin-bottom: 2.5rem;
+.show {
+  margin: 0;
 }
-@media screen and (min-width: 768px) {
-  .shows {
-    width: 100%;
-    padding-left: 1.5rem;
+@media screen and (min-width: 1280px) {
+  .show {
+    margin-top: 4.6rem;
   }
 }
 @media screen and (min-width: 1280px) {
-  .shows {
-    padding-left: 11rem;
-    display: flex;
-    width: auto;
+  .show {
+    width: 60%;
+    margin: 0 0 0 25rem;
   }
 }
-.shows__table {
-  margin-top: 1.5rem;
-}
-@media screen and (min-width: 768px) {
-  .shows__table {
-    text-align: start;
-    margin-right: 1.5rem;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .shows__table {
-    margin-left: 7.5rem;
-    width: 65%;
-  }
-}
-.shows__card {
-  border-bottom: 1px solid #E1E1E1;
-  padding: 1rem;
-}
-@media screen and (min-width: 768px) {
-  .shows__card {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.7rem;
-    padding: 1.5rem 1.125rem;
-  }
-}
-.shows__card h3 {
-  padding-bottom: 0.5rem;
-  font-size: 0.8125rem;
-  line-height: 1.125rem;
+.show__button {
+  background-color: #323232;
+  color: #FFFFFF;
+  border-radius: 4px;
+  height: 2.5rem;
+  width: 90%;
+  margin: 1rem 0rem 1rem 1rem;
+  cursor: pointer;
+  font-size: 0.625rem;
+  line-height: 1.25;
   font-weight: 700;
   font-family: "Avenir Next LT Pro Bold", sans-serif;
 }
 @media screen and (min-width: 768px) {
-  .shows__card h3 {
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-    width: 25%;
+  .show__button {
+    font-size: 0.75rem;
+    width: 16rem;
+    padding: 0 2.5rem;
   }
 }
-.shows__card p {
-  padding-bottom: 0.5rem;
+.show__button:hover {
+  background-color: #000000;
+}
+.show__title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  font-family: "Avenir Next LT Pro Bold", sans-serif;
+  color: #000000;
+  padding: 2.4rem 0 0 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .show__title {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    padding: 3rem 0 2rem 2.5rem;
+  }
+}
+.show__element {
+  border-bottom: 1px solid #E1E1E1;
+}
+@media screen and (min-width: 768px) {
+  .show__element {
+    display: flex;
+    align-items: center;
+    padding: 0rem;
+    margin: 0 1rem;
+  }
+  .show__element:hover {
+    background-color: #E1E1E1;
+  }
+}
+.show__element-label {
+  color: #AFAFAF;
+  padding: 2rem 0 0.6rem 0;
+  font-size: 0.625rem;
+  line-height: 1.25;
+  font-weight: 700;
+  font-family: "Avenir Next LT Pro Bold", sans-serif;
+}
+@media screen and (min-width: 768px) {
+  .show__element-label {
+    font-size: 0.75rem;
+    display: none;
+  }
+}
+.show__element-value {
+  color: #000000;
   font-size: 0.8125rem;
   line-height: 1.125rem;
   font-weight: 400;
   font-family: "Avenir Next LT Pro Regular", sans-serif;
 }
 @media screen and (min-width: 768px) {
-  .shows__card p {
+  .show__element-value {
     font-size: 0.875rem;
     line-height: 1.375rem;
-    width: 25%;
   }
 }
-.shows__card:hover {
-  background-color: #FAFAFA;
-}
-.shows__heading {
-  color: #AFAFAF;
-}
-@media screen and (min-width: 768px) {
-  .shows__heading {
-    display: none;
-  }
-}
-.shows__title {
-  margin: 0;
-  font-size: 1.5rem;
-  line-height: 2rem;
+.show__element-value--date {
+  color: #000000;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
   font-weight: 700;
   font-family: "Avenir Next LT Pro Bold", sans-serif;
 }
 @media screen and (min-width: 768px) {
-  .shows__title {
-    font-size: 2.25rem;
-    line-height: 2.75rem;
+  .show__element-value--date {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.show__container {
+  padding: 0 1.6rem;
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  .show__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
   }
 }
 @media screen and (min-width: 1280px) {
-  .shows__title {
-    margin-top: 1.5rem;
+  .show__container {
+    justify-content: space-evenly;
   }
 }
-.shows__button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.5rem;
-  width: 100%;
-  background-color: #323232;
-  color: #FFFFFF;
-  border-radius: 0.25rem;
-  width: 100%;
-  border: none;
-  padding: 0;
-  margin: 0;
+.show__table-item {
+  color: #AFAFAF;
   font-size: 0.625rem;
   line-height: 1.25rem;
   font-weight: 700;
   font-family: "Avenir Next LT Pro Bold", sans-serif;
 }
 @media screen and (min-width: 768px) {
-  .shows__button {
+  .show__table-item {
     font-size: 0.75rem;
-    width: 9.375rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin: 0;
+    margin-right: 8rem;
+    display: flex;
+    justify-content: space-around;
   }
 }
-.shows__button:hover {
-  background-color: #000000;
-  cursor: pointer;
-  transition: 1s;
+@media screen and (min-width: 1280px) {
+  .show__table-item {
+    margin-right: 8rem;
+  }
 }
-.shows__tablet--header {
+.show__table-header {
   display: none;
 }
 @media screen and (min-width: 768px) {
-  .shows__tablet--header {
+  .show__table-header {
+    padding-left: 2.5rem;
     display: flex;
   }
 }
-@media screen and (min-width: 768px) {
-  .shows__tablet--header p {
-    width: 25%;
+@media screen and (min-width: 1280px) {
+  .show__table-header {
+    justify-content: flex-start;
   }
 }
-.shows__tablet--head {
-  color: #AFAFAF;
+.show__date {
+  font-size: 0.625rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  font-family: "Avenir Next LT Pro Bold", sans-serif;
+}
+@media screen and (min-width: 768px) {
+  .show__date {
+    font-size: 0.75rem;
+    width: 10rem;
+  }
+}
+.show__venue {
   font-size: 0.8125rem;
   line-height: 1.125rem;
   font-weight: 400;
   font-family: "Avenir Next LT Pro Regular", sans-serif;
 }
 @media screen and (min-width: 768px) {
-  .shows__tablet--head {
+  .show__venue {
     font-size: 0.875rem;
     line-height: 1.375rem;
-    margin-left: 0.5rem;
+    width: 10rem;
+  }
+}
+.show__location {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+  font-family: "Avenir Next LT Pro Regular", sans-serif;
+}
+@media screen and (min-width: 768px) {
+  .show__location {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    width: 10rem;
   }
 }
 
@@ -535,7 +566,7 @@ img {
   border-radius: 0.2rem;
 }
 .footer__icon:hover {
-  background-color: rgba(175, 175, 175, 0.7);
+  background-color: #AFAFAF;
 }
 .footer__contacts {
   font-size: 0.8rem;

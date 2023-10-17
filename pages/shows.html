@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BandSite | Home</title>
+    <title>BandSite | Shows</title>
     <link rel="stylesheet" href="../styles/shows.css">
 </head>
 <body>
@@ -34,12 +34,10 @@
     </section>
     <main id="main">
         <!-- SHOWS SECTION -->
-        <section class="shows">
-            <h2 class="shows__title">Shows</h2>
-            <div class="shows__table">
-
-            </div>
-        </section>       
+        <div class="shows">
+            <div class="show__title">Shows</div>
+            <div class="show" id="show-section"></div>
+        </div>
         <!-- FOOTER SECTION -->
         <footer class="wrapper--footer">
             <section class="footer">
@@ -108,13 +106,14 @@
                     </div>
                     <!-- LOGO MOBILE -->
                     <div class="footer__logo footer__logo--mobile">
-                        <a class="footer__link--mobile" href="#home"><img src="../assets/logos/Logo-bandsite.svg" alt="bandsite logo"></a>
+                        <a class="footer__link--mobile" href="../index.html"><img src="../assets/logos/Logo-bandsite.svg" alt="bandsite logo"></a>
                         <p class="footer__copy">Copyright The Bees Knees © 2021 All Rights Reserved</p>
                     </div>
                 </div>
             </section>
         </footer>
     </main>
-    <script src="../scripts/build-shows-page.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="../scripts/build-shows-page.js" type="module"></script>
 </body>
 </html>

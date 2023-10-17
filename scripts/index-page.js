@@ -1,90 +1,104 @@
-const conversationComments = [
-    {
-      "name": "Connor Walton",
-      "date": "02/17/2021",
-      "comment": "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
-    },
-    {
-      "name": "Emilie Beach",
-      "date": "01/09/2021",
-      "comment": "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
-    },
-    {
-      "name": "Miles Acosta",
-      "date": "12/20/2020",
-      "comment": "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
-    }
-];
+import { BandSiteAPI } from "./band-site-api.js";
+const bandSiteAPI = new BandSiteAPI("e865bbf6-2ee3-4669-9c18-95e5dd94dc50");
 
-const commentsDiv = document.querySelector(".conversation__comments");
-
-function displayComment(commentObj) {
-
-    const comments__card = document.createElement("div")
-    comments__card.className = "conversation__card";
-
-    const comments__row = document.createElement("div");
-    comments__row.className = "conversation__row";
-
-    const column__picture = document.createElement("div");
-    column__picture.className = "conversation__picture";
-    comments__row.appendChild(column__picture);
-
-    const profile__picture = document.createElement("div");
-    profile__picture.className = "conversation__profile--pic";
-    column__picture.appendChild(profile__picture);
-
-    const column__details = document.createElement("div");
-    column__details.className = "conversation__details";
-    comments__row.appendChild(column__details);
-
-    const column__namedate = document.createElement("div");
-    column__namedate.className = "conversation__namedate";
-
-    const comment__name = document.createElement("p");
-    comment__name.innerText = commentObj["name"];
-    comment__name.className = "conversation__namedate--name";
-    column__namedate.appendChild(comment__name);
-
-    const comment__date = document.createElement("p");
-    comment__date.innerText = commentObj["date"];
-    comment__date.className = "conversation__namedate--date";
-    column__namedate.appendChild(comment__date);
-
-    column__details.append(column__namedate);
-
-    const comment__text = document.createElement("p");
-    comment__text.innerText = commentObj["comment"];
-    column__details.appendChild(comment__text);
-
-    comments__card.appendChild(comments__row);
-    commentsDiv.appendChild(comments__card);   
-}
-
-for (let i = 0; i < conversationComments.length; i++) {
-  displayComment(conversationComments[i]);
-  
-}
-
-
-let form = document.querySelector(".conversation__form");
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    let newDate = new Date();
-    let currentDate = (newDate.getMonth()+1)+'/'+newDate.getDate()+'/'+newDate.getFullYear();
-    let newCommentObj = {
-        "name": e.target.name.value,
-        "date": currentDate,
-        "comment": e.target.comment.value
-    }
-
-    conversationComments.unshift(newCommentObj);
-
-    commentsDiv.innerText = "";
-
-    for (let i = 0; i < conversationComments.length; i++) {
-      displayComment(conversationComments[i]);
-    }
-
-    form.reset();
+bandSiteAPI.getComments().then((response) => {
+  createComments(response);
 });
+
+const form = document.getElementById("comment-form");
+const commentSection = document.getElementById("comment-section");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const name = form.elements[0];
+  const comment = form.elements[1];
+
+  let isNameValid = isValid(name);
+  let isCommentValid = isValid(comment);
+  if (isNameValid && isCommentValid) {
+    await bandSiteAPI.postComment({
+      name: name.value,
+      comment: comment.value,
+    });
+    name.value = "";
+    comment.value = "";
+
+    await rerender();
+  }
+});
+
+const rerender = async () => {
+  commentSection.innerHTML = "";
+
+  const updatedComments = await bandSiteAPI.getComments();
+  createComments(updatedComments);
+};
+
+function isValid(input) {
+  if (input.value.trim() === "") {
+    input.classList.add("error");
+    return false;
+  }
+  return true;
+}
+
+function createComments(comments) {
+  let elements = "";
+  for (let dataElement of comments) {
+    elements += Comment(dataElement);
+  }
+
+  commentSection.innerHTML = elements;
+  addEventListeners(comments);
+}
+
+async function onDelete(event) {
+  const id = event.target.id.split("_")[0];
+  bandSiteAPI.deleteComment(id).then(() => {
+    rerender();
+  });
+}
+
+function addEventListeners(comments) {
+  for (let comment of comments) {
+    document
+      .getElementById(`${comment.id}_delete`)
+      .addEventListener("click", onDelete);
+    document
+      .getElementById(`${comment.id}_like`)
+      .addEventListener("click", onLike);
+  }
+}
+
+async function onLike(event) {
+  const id = event.target.id.split("_")[0];
+  bandSiteAPI.likeComment(id).then(() => {
+    rerender();
+  });
+}
+
+const Comment = (comment) => {
+  return `
+    <div class="comment-element" id="${comment.id}">
+      <div class="comment-photo"> </div>
+      <div class="comment-content">
+        <div class="comment-header">
+          <div class="comment-name">${comment.name}</div>
+          <div class="comment-date">${new Date(comment.timestamp).toLocaleDateString()}</div>
+        </div>
+        <div class="comment-text">
+            <p class="comment-paragraph">${comment.comment}</p>
+        </div>
+        <div class="comment-element__buttons">
+          <div class="comment-element__like">
+            <img class="comment-element__button-like" src="./assets/icons/SVG/icon-like.svg" value="like" id="${comment.id}_like">
+            <div class="comment-element__number" id="${comment.id}_likeCount">${comment.likes}</div>Like</img>
+          </div>
+          <div class="comment-element__delete">
+            <img class="comment-element__button-delete" src="./assets/icons/SVG/icon-delete.svg" value="delete" id="${comment.id}_delete"></img>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+};
